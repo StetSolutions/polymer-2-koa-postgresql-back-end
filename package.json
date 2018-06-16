@@ -1,5 +1,5 @@
 {
-  "name": "ss-simple-back-end",
+  "name": "simple-back-end",
   "version": "0.1.0",
   "description": "Stet Solutions Simple Backend (PostgreSQL/Koa)",
   "main": "server.js",
@@ -38,7 +38,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/StetSolutions/ss-simple-back-end.git"
+    "url": "git+https://github.com/StetSolutions/simple-back-end.git"
   },
   "scripts": {
     "db-constraints": "find modules/*/models/constraints -name *.sql -exec psql -d $npm_package_config_db_database -U postgres -h localhost -f {} \\;",
@@ -57,9 +57,9 @@
   "author": "Stet Solutions Inc.",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/StetSolutions/ss-simple-back-end/issues"
+    "url": "https://github.com/StetSolutions/simple-back-end/issues"
   },
-  "homepage": "https://github.com/StetSolutions/ss-simple-back-end#readme",
+  "homepage": "https://github.com/StetSolutions/simple-back-end#readme",
   "config": {
     "db": {
       "database": "simple_test"
