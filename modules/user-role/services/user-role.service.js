@@ -1,7 +1,7 @@
 const path = require('path')
 
 const { pool } = require(path.resolve('./config/lib/pg'))
-const { _raw, sql } = require('pg-extra')
+const { sql } = require('pg-extra')
 
 module.exports = {
 
