@@ -62,7 +62,7 @@
   "homepage": "https://github.com/StetSolutions/ss-simple-back-end#readme",
   "config": {
     "db": {
-      "database": "simple_dev"
+      "database": "simple_test"
     }
   },
   "keywords": []
