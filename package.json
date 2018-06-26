@@ -48,8 +48,7 @@
     "db-seed": "node ./config/lib/seed.js",
     "debug": "NODE_ENV=development && npm init -f && node --inspect server.js",
     "start": "NODE_ENV=production && SIMPLE_SCHEDULER=true && npm init -f && node server.js",
-    "pretest": "NODE_ENV=test",
-    "test": "ava modules/*/tests/*.js -s -v"
+    "test": "NODE_ENV=test && ava modules/*/tests/*.js -s -v"
   },
   "engines": {
     "node": "8.9.1"
