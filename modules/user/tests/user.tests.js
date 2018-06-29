@@ -5,6 +5,8 @@ const server = require(path.resolve('./server.js'))
 const request = require('supertest').agent(server.listen())
 const { test } = require('ava')
 
+const moment = require('moment')
+
 const admin = {
   id: 1,
   email: 'admin@localhost.com',
@@ -147,13 +149,11 @@ test.serial('Search term only', async t => {
 })
 
 test.serial('Search start date only', async t => {
-  let date = new Date()
-
-  date.setDate(date.getDate() - 1)
+  const date = moment().add(-1, 'second').format('YYYY-MM-DDTHH:mm:ss.SSS')
 
   const search = JSON.stringify(
     {
-      startDate: date.toISOString()
+      startDate: date
     }
   )
 
@@ -162,17 +162,23 @@ test.serial('Search start date only', async t => {
 
   t.is(res.status, 200)
 
-  t.is(res.body.totalCount, 3)
+  t.is(res.body.totalCount, 1)
 })
 
 test.serial('Search end date only', async t => {
-  let date = new Date()
+  let endDate
 
-  date.setDate(date.getDate() + 1)
+  const users = await request
+    .get('/api/v1/users?limit=5&offset=0&column=created&direction=asc&search={}')
+
+  if (users.body.rows.length) {
+    const firstUserCreated = users.body.rows[0].created
+    endDate = moment(firstUserCreated).add(1, 'millisecond').format('YYYY-MM-DDTHH:mm:ss.SSS')
+  }
 
   const search = JSON.stringify(
     {
-      endDate: date.toISOString()
+      endDate: endDate
     }
   )
 
@@ -181,7 +187,7 @@ test.serial('Search end date only', async t => {
 
   t.is(res.status, 200)
 
-  t.is(res.body.totalCount, 3)
+  t.is(res.body.totalCount, 1)
 })
 
 test.serial('Update', async t => {
