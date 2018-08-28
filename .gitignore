@@ -1,1 +1,26 @@
+# OS
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Node and related ecosystem
+.nodemonignore
 node_modules/
+
+# General
+*.env
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+*.tmp
+*.bak
+*.swp
+logs/
+build/
+
+# VS Code
+.vscode/*
